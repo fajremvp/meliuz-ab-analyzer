@@ -1,32 +1,30 @@
 # Relatório Executivo: Teste A/B de Cashback – Parceiro C
 
 **Autor:** Analista de Growth, Méliuz  
-**Período de Análise:** 45 dias  
+**Data:** Outubro de 2023  
+**Parceiro:** Parceiro C  
+**Duração do Teste:** 45 dias  
 
 ---
 
 ### 1. Resumo dos Dados
-O teste A/B para o **Parceiro C** avaliou duas estratégias de cashback ao longo de 45 dias, dividindo a base de forma equivalente (cerca de 4,5 mil compradores em cada grupo):
+O teste A/B avaliou duas estratégias de cashback para o Parceiro C ao longo de 45 dias, dividindo a base de forma equilibrada:
+*   **Grupo 1:** 4.549 compradores | Vendas Totais: R$ 1.738.460,00 | Comissão Total: R$ 121.693,00 | Margem Líquida Total: R$ 34.769,00
+*   **Grupo 2:** 4.522 compradores | Vendas Totais: R$ 1.685.235,00 | Comissão Total: R$ 117.967,00 | Margem Líquida Total: R$ 0,00 *(Cashback igualou a comissão)*
 
-*   **Grupo 1:** Gerou **R$ 1.738.460,00** em vendas totais, com uma comissão de R$ 121.693,00, distribuição de R$ 86.924,00 em cashback e garantiu uma **Margem Líquida Total de R$ 34.769,00** (Margem por comprador de R$ 7,64).
-*   **Grupo 2:** Gerou **R$ 1.685.235,00** em vendas totais, com uma comissão de R$ 117.967,00. No entanto, todo o valor da comissão foi repassado como cashback (R$ 117.967,00), resultando em **Margem Líquida Total zerada** (R$ 0,00).
+**Resultado Estatístico:** O **Grupo 1** foi o vencedor absoluto em Margem Líquida por Comprador, com significância estatística robusta ($p\text{-value} = 0.0000$).
 
 ---
 
 ### 2. Interpretação da Margem vs Volume
-Embora ambos os grupos tenham apresentado volumes de compradores e de vendas em patamares muito parecidos, a dinâmica financeira foi radicalmente diferente:
-
-*   O **Grupo 2** operou em "breakeven" de margem (margem líquida zero), pois utilizou 100% da comissão recebida para pagar o cashback ao usuário. Isso impulsiona o volume de forma insustentável para o negócio, gerando receita estritamente para o parceiro, mas sem capturar valor para o Méliuz.
-*   O **Grupo 1** adotou uma estratégia de cashback otimizada, retendo parte da comissão (Margem Líquida de 28,5% sobre a comissão). Mesmo retendo valor, o grupo conseguiu superar o volume de vendas do Grupo 2 em aproximadamente **R$ 53.225,00**, provando que um cashback maior nem sempre é o único motor de conversão.
-*   **Significância Estatística:** Com um **P-Value de 0.0000** no teste de bootstrap para a Margem Líquida por Comprador, temos certeza estatística absoluta de que o desempenho superior do Grupo 1 não ocorreu por acaso.
+Os dados demonstram claramente a armadilha do foco exclusivo em volume:
+*   **Eficiência Financeira (Grupo 1):** Ao calibrar o cashback de forma sustentável, o Grupo 1 gerou uma margem líquida média de **R$ 7,64 por comprador**, garantindo uma saúde financeira saudável para a operação (R$ 34.769,00 de lucro retido).
+*   **Canibalização de Margem (Grupo 2):** Embora o Grupo 2 tenha gerado um volume de compradores e vendas ligeiramente próximo, a estratégia de repasse de cashback consumiu **100% da comissão** recebida (margem líquida de R$ 0,00). Ou seja, geramos receita para o parceiro e transações na plataforma sem capturar valor para o Méliuz.
 
 ---
 
 ### 3. Recomendação Acionável
+**Ação a ser tomada:** Escalar Grupo 1.
 
-**Ação a ser tomada: Escalar Grupo 1**
-
-**Justificativa:**  
-A recomendação oficial é a adoção definitiva do **Grupo 1**. A decisão baseia-se no pilar fundamental de crescimento sustentável da Méliuz: **saúde financeira aliada à eficiência**. 
-
-Enquanto o Grupo 2 sacrifica integralmente a rentabilidade em troca de volume (gerando margem zero), o Grupo 1 demonstra que é possível reter margem líquida positiva e, ainda assim, entregar um volume superior de vendas (R$ 1,73 mi vs R$ 1,68 mi). Escalar o Grupo 1 maximiza a receita da companhia com o Parceiro C sem comprometer a conversão dos usuários.
+**Por que esta é a melhor decisão?**
+A recomendação oficial é **Escalar o Grupo 1** porque ele prova que é possível tracionar volume (R$ 1,73M em vendas) sem sacrificar a rentabilidade. O Grupo 2 provou ser financeiramente inviável (margem zero), operando apenas para pagar o custo de aquisição/estímulo do usuário sem gerar lucro operacional. Escalar o Grupo 1 garante crescimento saudável, maximizando a Margem Líquida por Comprador com validação estatística irrefutável.
