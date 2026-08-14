@@ -20,12 +20,10 @@ def main():
 
     print("Calculando métricas e executando Bootstrap...")
     metrics = compute_metrics(df)
-    winner, p_value = get_statistical_result(df, metrics)
-
-    confianca = "Alta" if p_value < 0.05 else "Moderada" if p_value < 0.10 else "Baixa"
+    winner, p_value, recomendacao, confianca = get_statistical_result(df, metrics)
 
     print("Invocando Agente de IA para redação do relatório...")
-    report_md = generate_ai_report(parceiro, metrics, winner, p_value)
+    report_md = generate_ai_report(parceiro, metrics, winner, p_value, recomendacao)
 
     # Salvar o relatório Markdown
     os.makedirs("reports", exist_ok=True)

@@ -1,0 +1,6 @@
+data_registro,nome_teste,vencedor_sugerido,confianca,p_value
+2026-08-14T19:08:09.728922,Cashback A/B - Parceiro A,Grupo 2,Baixa,0.5546
+2026-08-14T19:09:45.434856,Cashback A/B - Parceiro A,Grupo 2,Baixa,0.5546
+2026-08-14T19:11:08.768181,Cashback A/B - Parceiro A,Grupo 2,Baixa,0.5546
+2026-08-14T19:15:11.607655,Cashback A/B - Parceiro B,Grupo 1,Alta,0.0000
+2026-08-14T19:15:23.168137,Cashback A/B - Parceiro C,Grupo 1,Alta,0.0000

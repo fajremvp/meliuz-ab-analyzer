@@ -36,12 +36,14 @@ def bootstrap_diff(a, b, n_boot=10000, seed=42):
     return p_value
 
 def get_statistical_result(df, metrics_df):
-    """Compara o melhor e o segundo melhor grupo."""
+    """Compara o melhor e o segundo melhor grupo e define a recomendação."""
     ranked = metrics_df.sort_values("margem_por_comprador", ascending=False)
     winner = ranked.iloc[0]["grupo"]
 
+    compradores_ok = ranked.iloc[0]["compradores_total"] >= ranked["compradores_total"].median()
+
     if len(ranked) < 2:
-        return winner, 1.0
+        return winner, 1.0, "Escalar variante", "Alta"
 
     runner_up = ranked.iloc[1]["grupo"]
 
@@ -49,4 +51,15 @@ def get_statistical_result(df, metrics_df):
     vb = daily_margin_per_buyer(df, runner_up)
 
     p_value = bootstrap_diff(va, vb)
-    return winner, p_value
+
+    if p_value < 0.05 and compradores_ok:
+        confianca = "Alta"
+        recomendacao = f"Escalar {winner}"
+    elif p_value < 0.10:
+        confianca = "Moderada"
+        recomendacao = f"Escalar {winner} (com monitoramento)"
+    else:
+        confianca = "Baixa"
+        recomendacao = "Inconclusivo (Nenhuma variante clara)"
+
+    return winner, p_value, recomendacao, confianca

@@ -2,7 +2,7 @@ import pandas as pd
 import re
 
 def parse_currency_brl(val):
-    """Converte 'R$ 1.234,56' -> 1234.56 de forma segura."""
+    """Converte 'R$ 10.273' -> 10273.0 e 'R$ 1.234,56' -> 1234.56"""
     if pd.isna(val):
         return None
     s = str(val).strip()
@@ -12,6 +12,9 @@ def parse_currency_brl(val):
 
     if "," in s:
         s = s.replace(".", "").replace(",", ".")
+    else:
+        s = s.replace(".", "")   # Trata "." como separador de milhar quando não há centavos
+
     try:
         return float(s)
     except ValueError:
