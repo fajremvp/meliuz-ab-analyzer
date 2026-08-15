@@ -18,6 +18,11 @@ def main():
     df = load_dataset(args.file)
     parceiro = df["parceiro"].iloc[0]
 
+    # Criar descrição dinâmica baseada nos dados do teste
+    num_variantes = df['grupo'].nunique()
+    dias_teste = df['data'].nunique()
+    descricao = f"Teste de cashback com {num_variantes} variantes durante {dias_teste} dias."
+
     print("Calculando métricas e executando Bootstrap...")
     metrics = compute_metrics(df)
     winner, p_value, recomendacao, confianca = get_statistical_result(df, metrics)
@@ -36,7 +41,9 @@ def main():
     sheet_id = os.getenv("GOOGLE_SHEET_ID")
     log_result(
         nome_teste=f"Cashback A/B - {parceiro}",
+        descricao=descricao,
         resultado=winner,
+        decisao=recomendacao,
         confianca=confianca,
         p_value=p_value,
         sheet_id=sheet_id
