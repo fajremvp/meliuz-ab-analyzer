@@ -23,11 +23,13 @@ def generate_ai_report(parceiro, metrics_df, winner, p_value, recomendacao):
     1. Resumo dos Dados
     2. Interpretação da Margem vs Volume
     3. Recomendação Acionável (Use a recomendação oficial acima e explique o porquê com base nos dados).
+
+    DIRETRIZ DE ESCRITA IMPORTANTE:
+    - Nunca use linguagem de certeza absoluta em estatística (ex: "100% de certeza" ou "irrefutável"). Prefira "alta confiança estatística" ou "altamente improvável ser ao acaso".
+    - NUNCA invente ou adicione datas no cabeçalho (como "Outubro de 2023"). Mantenha apenas o nome do Parceiro e o período de dias.
     """
 
-    response = client.models.generate_content(
-        model="gemini-3.5-flash-lite",
-        contents=contexto,
-    )
+    chat = client.chats.create(model="gemini-3.5-flash-lite")
+    response = chat.send_message(contexto)
 
     return response.text
