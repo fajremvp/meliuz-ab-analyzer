@@ -1,0 +1,4 @@
+data_registro,nome_teste,descricao,vencedor_sugerido,decisao,confianca,p_value
+2026-08-14T21:15:24.339208,Cashback A/B - Parceiro A,Teste de cashback com 3 variantes durante 92 dias.,Grupo 1,Escalar Grupo 1 (com monitoramento),Moderada,0.0000
+2026-08-14T21:15:29.693566,Cashback A/B - Parceiro B,Teste de cashback com 3 variantes durante 61 dias.,Grupo 1,Escalar Grupo 1,Alta,0.0000
+2026-08-14T21:15:34.678412,Cashback A/B - Parceiro C,Teste de cashback com 2 variantes durante 45 dias.,Grupo 1,Escalar Grupo 1,Alta,0.0000
