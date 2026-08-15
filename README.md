@@ -1,15 +1,15 @@
 # Méliuz A/B Analyzer
 
-Ferramenta em Python para analisar testes A/B de cashback por parceiro e apoiar a decisão de qual variante deve ser escalada. Feita para o teste técnico de Estágio de Operações Integradas - Méliuz.
+Ferramenta em Python para analisar testes A/B de cashback por parceiro e comparar as variantes e indicar qual delas teve o melhor resultado. Feita para o teste técnico de Estágio de Operações Integradas - Méliuz.
 
 ## O que ela faz
 
 Dado um CSV de teste A/B (schema: `Data`, `Grupos de usuários`, `Parceiro`, `compradores`, `comissão`, `cashback`, `vendas totais`), a ferramenta:
 
 1. Lê e limpa os dados (parsing de moeda em formato BR, remoção de duplicatas e linhas inválidas).
-2. Calcula, por grupo/variante: compradores totais, comissão, cashback, vendas (GMV) e **margem líquida por comprador** (comissão − cashback, normalizada por comprador) — a métrica usada para decidir, em vez de volume bruto.
+2. Calcula, por grupo/variante: compradores totais, comissão, cashback, vendas (GMV) e **margem líquida por comprador** (comissão − cashback, normalizada por comprador) - usando margem líquida por comprador como principal métrica.
 3. Roda um teste de significância por **bootstrap** (10.000 reamostragens), comparando o grupo com maior margem contra o segundo colocado, usando o **dia** como unidade estatística.
-4. Aplica uma regra de decisão determinística (calculada em Python, não pelo LLM):
+4. Aplica uma regra de decisão (calculada em Python, não pelo LLM):
    - `p < 0.05` **e** volume de compradores do vencedor não abaixo da mediana → confiança **Alta**, recomenda escalar.
    - `p < 0.10` → confiança **Moderada**, escalar com monitoramento.
    - Caso contrário → **Baixa** confiança / inconclusivo.
@@ -19,17 +19,17 @@ Dado um CSV de teste A/B (schema: `Data`, `Grupos de usuários`, `Parceiro`, `co
 ## Arquitetura
 
 ```text
-main.py                # CLI orquestrador
+main.py                # CLI e execução da análise
 src/load.py            # leitura e limpeza do CSV
-src/analyze.py         # métricas, bootstrap e regra de decisão (determinístico)
+src/analyze.py         # métricas, bootstrap e regra de decisão
 src/llm_report.py      # chamada ao Gemini para redigir o relatório
 src/sheets.py          # grava no Google Sheets, com fallback para CSV
 data/                  # datasets de entrada
 reports/               # relatórios .md gerados (um por parceiro)
-tracking/tests_log.csv # planilha de acompanhamento (fallback local)
+tracking/tests_log.csv # registro de testes (fallback local)
 ```
 
-O cálculo (métricas, teste estatístico, decisão) é 100% determinístico em Python - rodar o mesmo dataset duas vezes sempre dá o mesmo vencedor e o mesmo p-value. O Gemini entra só na etapa final, para transformar os números já decididos em relatório em Markdown. Isso mantém a solução auditável e reproduzível mesmo usando IA no pipeline.
+O cálculo (métricas, teste estatístico, decisão) é 100% determinístico em Python - rodar o mesmo dataset duas vezes sempre dá o mesmo vencedor e o mesmo p-value. O Gemini entra só na etapa final, para transformar os números já decididos em relatório em Markdown.
 
 ## Como rodar
 
